@@ -8,3 +8,15 @@ wheels/
 
 # Virtual environments
 .venv
+
+# VSCode settings
+.vscode
+
+# Data files
+data/
+
+# Environment variables
+.env
+
+# Gradio files
+.gradio

@@ -1,7 +1,23 @@
 [project]
-name = "doc-chat"
+name = "domainmind"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "gradio>=5.39.0",
+    "ipykernel>=6.30.0",
+    "langchain-chroma>=0.2.5",
+    "langchain-community>=0.3.27",
+    "langchain-core>=0.3.72",
+    "langsmith>=0.4.8",
+    "pip>=25.1.1",
+    "pymupdf>=1.26.3",
+    "pytest>=8.4.1",
+    "python-dotenv>=1.1.1",
+    "sentence-transformers>=5.0.0",
+    "torch>=2.7.1",
+    "torchaudio>=2.7.1",
+    "torchvision>=0.22.1",
+    "tqdm>=4.67.1",
+]

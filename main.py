@@ -1,5 +1,8 @@
+from src.Interface import launch_interface
+
+
 def main():
-    print("Hello from doc-chat!")
+    launch_interface()
 
 
 if __name__ == "__main__":
