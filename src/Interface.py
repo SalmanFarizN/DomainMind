@@ -60,4 +60,4 @@ def launch_interface():
         description="Ask questions about your scientific PDFs. Powered by RAG + Qwen3:8B",
         examples=["What are colloidal particles?", "Tell me more about that"],
     )
-    demo.launch(share=True, inbrowser=True)
+    demo.launch(share=False, inbrowser=True)
