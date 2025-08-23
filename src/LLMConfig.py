@@ -5,5 +5,5 @@ llm = ChatOllama(model="qwen3:8b", base_url="http://localhost:11434", streaming=
 
 # Load the VectorDB and create a retriever
 vectordb = VectorDB()
-vectordb.load_vectorstore(persist_directory="data/doc_vectordb")
+vectordb.load_vectorstore(persist_directory="data/sampledoc_vectordb")
 retriever = vectordb.create_retriever()
