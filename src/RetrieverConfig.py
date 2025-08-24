@@ -1,0 +1,6 @@
+from src.VectorDB import VectorDB
+
+# Load the VectorDB and create a retriever
+vectordb = VectorDB()
+vectordb.load_vectorstore(persist_directory="data/sampledoc_vectordb")
+retriever = vectordb.create_retriever()

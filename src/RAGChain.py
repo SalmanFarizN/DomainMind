@@ -3,7 +3,8 @@ from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.prompts.chat import HumanMessagePromptTemplate
 from langchain_core.runnables import RunnableLambda
 from langchain_core.output_parsers import StrOutputParser
-from src.LLMConfig import llm, retriever
+from src.LLMConfig import llm
+from src.RetrieverConfig import retriever
 
 # Prompt for RAG chain with history and context.
 messages = [
