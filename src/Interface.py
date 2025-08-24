@@ -2,50 +2,33 @@
 import gradio as gr
 import re
 from langchain.schema import HumanMessage, AIMessage
-from src.RAGChain import rag_chain
+from src.RAGChain import rag_chain_multi_query
+from src.OutputProcess import split_think_and_answer, get_thought
+from src.OutputProcess import remove_details_blocks
 
 
-def split_think_and_answer(response):
-    """
-    Splits the response into the "thinking" part and the final answer.
-    Args:
-        response (str): The response string containing the thinking and answer parts.
-    Returns:
-        tuple: A tuple containing the thinking part and the final answer.
-    """
-    match = re.search(r"</think>\s*(.*)", response, re.DOTALL)
-    return match.group(1).strip() if match else response.strip()
-
-
-def get_thought(response):
-    """
-    Extracts the "thinking" part from the response.
-    Args:
-        response (str): The response string containing the thinking part.
-    Returns:
-        str: The extracted thinking part, or None if not found.
-    """
-    match = re.search(r"<think>(.*?)</think>", response, re.DOTALL)
-    return match.group(1).strip() if match else None
-
-
-def rag_qa(message, history):
+def rag_qa_multi_query(message, history):
+    # Convert Gradio history format to LangChain message format
     history_langchain_format = []
+    print("Gradio history:", history)
+    # Convert Gradio history (list of {"role": ..., "content": ...}) to LangChain format
     for turn in history:
         if turn["role"] == "user":
             history_langchain_format.append(HumanMessage(content=turn["content"]))
         elif turn["role"] == "assistant":
-            history_langchain_format.append(AIMessage(content=turn["content"]))
-
-    history_langchain_format.append(HumanMessage(content=message))
+            cleaned_content = remove_details_blocks(turn["content"])
+            history_langchain_format.append(AIMessage(content=cleaned_content))
 
     try:
-        response = rag_chain.invoke(
+        # Pass both current message and history to the chain
+        response = rag_chain_multi_query.invoke(
             {"history": history_langchain_format, "question": message}
         )
         thought = get_thought(response)
         final_answer = split_think_and_answer(response)
+
         if thought:
+            # Add collapsible section with the <think> content
             final_answer = f"<details><summary><b>🤔 Thinking</b></summary><pre>{thought}</pre></details>\n\n{final_answer}"
         return {"role": "assistant", "content": final_answer}
     except Exception as e:
@@ -54,7 +37,7 @@ def rag_qa(message, history):
 
 def launch_interface():
     demo = gr.ChatInterface(
-        fn=rag_qa,
+        fn=rag_qa_multi_query,
         type="messages",
         title="DomainMind",
         description="Powered by RAG + Qwen3:8B",
