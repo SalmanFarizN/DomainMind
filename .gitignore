@@ -13,7 +13,8 @@ wheels/
 .vscode
 
 # Data files
-data/
+data/raw
+data/doc_vectordb
 
 # Environment variables
 .env
