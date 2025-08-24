@@ -10,7 +10,6 @@ from src.OutputProcess import remove_details_blocks
 def rag_qa_multi_query(message, history):
     # Convert Gradio history format to LangChain message format
     history_langchain_format = []
-    print("Gradio history:", history)
     # Convert Gradio history (list of {"role": ..., "content": ...}) to LangChain format
     for turn in history:
         if turn["role"] == "user":
