@@ -8,7 +8,7 @@ def split_think_and_answer(response):
     Args:
         response (str): The response string containing the thinking and answer parts.
     Returns:
-        tuple: A tuple containing the thinking part and the final answer.
+        str: The final answer part after the thinking section.
     """
     match = re.search(r"</think>\s*(.*)", response, re.DOTALL)
     return match.group(1).strip() if match else response.strip()
