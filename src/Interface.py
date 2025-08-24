@@ -56,8 +56,7 @@ def launch_interface():
     demo = gr.ChatInterface(
         fn=rag_qa,
         type="messages",
-        title="📄 Scientific PDF Chatbot",
-        description="Ask questions about your scientific PDFs. Powered by RAG + Qwen3:8B",
-        examples=["What are colloidal particles?", "Tell me more about that"],
+        title="DomainMind",
+        description="Powered by RAG + Qwen3:8B",
     )
     demo.launch(share=False, inbrowser=True)
