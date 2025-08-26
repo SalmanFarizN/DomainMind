@@ -7,13 +7,7 @@ DomainMind documentation
 ========================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-# Other pages like usage.rst or introduction.rst can go here
-
-.. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
    :caption: API Reference:
 
    api/modules
