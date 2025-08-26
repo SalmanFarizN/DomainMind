@@ -21,3 +21,7 @@ data/doc_vectordb
 
 # Gradio files
 .gradio
+
+
+# Docs/source
+docs/source
