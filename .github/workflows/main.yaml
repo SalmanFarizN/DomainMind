@@ -12,6 +12,7 @@ permissions:
   pages: write
   id-token: write
 
+jobs:
 # New job to build and deploy the documentation
   deploy-docs:
     name: Deploy Documentation
