@@ -23,5 +23,5 @@ data/doc_vectordb
 .gradio
 
 
-# Docs/source
-docs/source
+# Docs build
+docs/build
