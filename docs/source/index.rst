@@ -10,9 +10,13 @@ DomainMind documentation
    :maxdepth: 2
    :caption: Contents:
 
-   code 
+# Other pages like usage.rst or introduction.rst can go here
 
-Indices and tables
+.. toctree::
+   :maxdepth: 2
+   :caption: API Reference:
+
+   api/modules
 ==================
 
 * :ref:`genindex`
