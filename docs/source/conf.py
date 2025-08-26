@@ -9,8 +9,16 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.abspath("../.."))
-sys.path.insert(0, os.path.abspath("../../src"))
+# sys.path.insert(0, os.path.abspath("../.."))
+# sys.path.insert(0, os.path.abspath("../../src"))
+
+# Always resolve paths relative to this conf.py file
+conf_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.abspath(os.path.join(conf_dir, "../.."))
+src_dir = os.path.abspath(os.path.join(conf_dir, "../../src"))
+
+sys.path.insert(0, project_root)
+sys.path.insert(0, src_dir)
 
 
 project = "DomainMind"
