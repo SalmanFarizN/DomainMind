@@ -3,22 +3,19 @@ from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.prompts.chat import HumanMessagePromptTemplate
 from langchain_core.runnables import RunnableLambda
 from langchain_core.output_parsers import StrOutputParser
-from src.LLMConfig import llm
-from src.RetrieverConfig import retriever
-from src.SummaryChain import summarization_chain
-from src.MultiQueryRetrievalChain import retrieval_chain
+from src.DomainMind.LLMConfig import llm
+from src.DomainMind.RetrieverConfig import retriever
+from src.DomainMind.SummaryChain import summarization_chain
+from src.DomainMind.MultiQueryRetrievalChain import retrieval_chain
+from src.DomainMind.DataLoad import load_prompt
 
 
-# Prompt template for RAG with multi-query and history summarization
+# Main Prompt 
+main_prompt = load_prompt("prompts/main_v1.txt")
+
 messages = [
     SystemMessage(
-        content="""
-        You are a helpful scientific assistant. You need to answer the question in a scientifically sound manner, \\
-        combining your own knowledge and the provided context and the conversation history. If you use information \\
-        from the provided context, cite it. If the answer is based on your own knowledge, state so. The conversation \\
-        history is provided above. You also have further context regarding the current question below from snippets \\
-        from various scientific papers. 
-        """
+        content=main_prompt
     ),
     HumanMessagePromptTemplate.from_template(
         "Context:\n{context}\n\nQuestion: {question}\n\n History: {history}"

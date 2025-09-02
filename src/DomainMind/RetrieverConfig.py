@@ -1,4 +1,4 @@
-from src.VectorDB import VectorDB
+from src.DomainMind.VectorDB import VectorDB
 
 # Load the VectorDB and create a retriever
 vectordb = VectorDB()

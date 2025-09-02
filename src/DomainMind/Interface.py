@@ -1,10 +1,9 @@
 # interface.py
 import gradio as gr
-import re
 from langchain.schema import HumanMessage, AIMessage
-from src.RAGChain import rag_chain_multi_query
-from src.OutputProcess import split_think_and_answer, get_thought
-from src.OutputProcess import remove_details_blocks
+from src.DomainMind.RAGChain import rag_chain_multi_query
+from src.DomainMind.OutputProcess import split_think_and_answer, get_thought
+from src.DomainMind.OutputProcess import remove_details_blocks
 
 
 def rag_qa_multi_query_final(message, history):

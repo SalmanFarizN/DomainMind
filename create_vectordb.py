@@ -1,6 +1,6 @@
 from pexpect import split_command_line
-from src.DataLoad import PDFLoad
-from src.VectorDB import VectorDB
+from src.DomainMind.DataLoad import PDFLoad
+from src.DomainMind.VectorDB import VectorDB
 
 
 pdf_loader = PDFLoad(dir="data/sample", chunk_size=1500, chunk_overlap=50)

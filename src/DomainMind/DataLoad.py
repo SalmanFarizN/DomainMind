@@ -47,3 +47,9 @@ class PDFLoad:
         print(f"Total PDF files found: {file_count}")
 
         return split_docs
+
+
+# Load prompt from external .txt file
+def load_prompt(filename):
+    with open(filename, "r", encoding="utf-8") as f:
+        return f.read()
