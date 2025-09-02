@@ -11,9 +11,7 @@ DomainMind documentation
    :caption: API Reference:
 
    api/modules
-==================
 
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-

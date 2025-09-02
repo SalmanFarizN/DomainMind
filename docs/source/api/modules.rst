@@ -1,7 +1,11 @@
-src
+DomainMind
 ===
 
 .. toctree::
    :maxdepth: 4
 
-   src
+   DomainMind
+   main
+   create_vectordb
+   ==================
+
