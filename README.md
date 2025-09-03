@@ -1,14 +1,16 @@
 # DomainMind: Local LLM with RAG on Domain-Specific Knowledgebase
 
+<img alt="Documentation" src="https://img.shields.io/badge/docs-GitHub Pages-blue">
+
 DomainMind is a demonstration project showing how a local Large Language Model (LLM) can be enhanced with Retrieval-Augmented Generation (RAG) to answer questions using a custom, domain-specific knowledgebase. In this case, the knowledgebase consists of scientific articles and books from a PhD bibliography, enabling the LLM to provide informed responses grounded in specialized literature it was not originally trained on.
 
-## Project Goals
+## 🎯 Project Goals
 
 - **Showcase RAG**: Demonstrate how RAG enables LLMs to access and utilize external, up-to-date, or proprietary knowledge.
 - **Domain Adaptation**: Illustrate how LLMs can be tailored to specific fields (here, scientific research) without retraining the base model.
 - **Local Operation**: Run everything locally for privacy, reproducibility, and independence from cloud APIs.
 
-## How It Works
+## 🧠 How It Works
 
 1. **Knowledgebase Construction**: Scientific articles and books are processed and stored in a vector database (ChromaDB).
 2. **Document Retrieval**: When a user asks a question, relevant documents are retrieved from the knowledgebase using semantic search.
@@ -18,24 +20,15 @@ DomainMind is a demonstration project showing how a local Large Language Model (
 
 - `main.py` — Entry point for running the demo.
 - `create_vectordb.py` — Script to create the vector database from a directory containing documents.
-- `src/` — Core modules:
-	- `DataLoad.py`: Loads and processes documents.
-	- `VectorDB.py`: Handles vector database operations.
-	- `RAGChain.py`: Implements the RAG pipeline.
-	- `LLMConfig.py`: LLM configuration and setup.
-	- `Interface.py`: User interaction logic.
-	- `RetrieverConfig.py`: Configuration for retrieval settings.
-	- `MultiQueryGenChain.py`: Generates multiple queries for retrieval.
-	- `MultiQueryRetrievalChain.py`: Handles retrieval for multiple queries.
-	- `SummaryChain.py`: Summarizes conversation history.
-	- `OutputProcess.py`: Processes outputs and cleans responses.
+- `DomainMind/` — Core modules:
 - `data/` — Contains the knowledgebase and raw files.
 	- `sample/`: Sample PDF. 
 	- `sampledoc_vectordb/`: Sample vector database for testing.
 - `notebooks/` — Jupyter notebooks for data processing and experimentation.
-- `tests/` — Unit tests.
+- `prompts/` — Text files containing prompt templates for the LLM.
 
-## Getting Started
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
@@ -57,7 +50,7 @@ uv sync
 ### Creating a Vector Database
 
 1. Clone the repository and place your directory containing domain-specific documents (PDFs, text files) in the `data/` directory. Subfolders within this directory are also supported.
-2. Update the paths in `src/create_vectordb.py` to point to your document folder.
+2. Update the paths in `create_vectordb.py` to point to your document folder.
 3. Run the script to create your own ChromaDB vector database:
 
 ```bash
@@ -66,7 +59,7 @@ python create_vectordb.py
 
 ### Configuring the Retriever
 
-1. Update the path to your newly created vector database in `src/RetrieverConfig.py`.
+1. Update the path to your newly created vector database in `DomainMind\RetrieverConfig.py`.
 2. This will allow you to create a RAG chain using your custom VectorDB.
 
 ### Running the Demo
@@ -79,7 +72,7 @@ python main.py
 
 2. Interact with the system by asking questions. The LLM will answer using information retrieved from your knowledgebase.
 
-## Example Use Case
+## 📚 Example Use Case
 
 In this example, we have created a VectorDB of the book "Understanding Deep Learning" by Dr. Simon J. D. Prince ([https://udlbook.github.io/udlbook/](https://udlbook.github.io/udlbook/)).
 
@@ -93,7 +86,7 @@ In this example, we have created a VectorDB of the book "Understanding Deep Lear
 ## Customization
 
 - Swap in your own documents in `data/`.
-- Adjust retrieval and LLM settings in `src/LLMConfig.py` and `src/RAGChain.py`.
+- Adjust retrieval and LLM settings in `DomainMind/LLMConfig.py` and `DomainMind/RAGChain.py`.
 
 ## References
 
@@ -103,4 +96,4 @@ In this example, we have created a VectorDB of the book "Understanding Deep Lear
 
 ## License
 
-This project is for demonstration and research purposes. See `LICENSE` for details.
+This project is for demonstration and research purposes. 

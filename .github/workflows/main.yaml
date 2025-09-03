@@ -1,0 +1,57 @@
+name: Build and Deploy Docs
+
+# Run this workflow on every push to the actions-setup-docs branch
+on:
+  push:
+    branches: [ actions-setup-docs ]
+
+
+# Add permissions for the workflow to write to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+# New job to build and deploy the documentation
+  deploy-docs:
+    name: Deploy Documentation
+    
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.13.5
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.5'
+      
+      - name: Install documentation dependencies
+        run: pip install -r docs/requirements.txt
+
+      - name: Build Sphinx documentation
+        run: sphinx-build -b html docs/source docs/build
+        # run: |
+        #  cd docs
+        #  make html
+
+      - name: Upload documentation artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/build/
+          #path: docs/build/html
+
+  # New job to handle the actual deployment to GitHub Pages
+  deploy:
+    name: Deploy to GitHub Pages
+    # This job requires the 'deploy-docs' job to have uploaded the artifact
+    needs: deploy-docs
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
