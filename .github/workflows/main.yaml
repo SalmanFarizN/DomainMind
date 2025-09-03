@@ -3,7 +3,7 @@ name: Build and Deploy Docs
 # Run this workflow on every push to the actions-setup-docs branch
 on:
   push:
-    branches: [ actions-setup-docs ]
+    branches: [ master ]
 
 
 # Add permissions for the workflow to write to GitHub Pages
