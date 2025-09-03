@@ -1,6 +1,6 @@
 # DomainMind: Local LLM with RAG on Domain-Specific Knowledgebase
 
-<img alt="Documentation" src="https://img.shields.io/badge/docs-GitHub Pages-blue">
+[![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://salmanfarizn.github.io/DomainMind/)
 
 DomainMind is a demonstration project showing how a local Large Language Model (LLM) can be enhanced with Retrieval-Augmented Generation (RAG) to answer questions using a custom, domain-specific knowledgebase. In this case, the knowledgebase consists of scientific articles and books from a PhD bibliography, enabling the LLM to provide informed responses grounded in specialized literature it was not originally trained on.
 
@@ -20,7 +20,7 @@ DomainMind is a demonstration project showing how a local Large Language Model (
 
 - `main.py` — Entry point for running the demo.
 - `create_vectordb.py` — Script to create the vector database from a directory containing documents.
-- `DomainMind/` — Core modules:
+- `DomainMind/` — Core modules 
 - `data/` — Contains the knowledgebase and raw files.
 	- `sample/`: Sample PDF. 
 	- `sampledoc_vectordb/`: Sample vector database for testing.
